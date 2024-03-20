@@ -11,9 +11,7 @@ function solution(name, yearning, photo) {
     
     photo.forEach((e) => {
         e.forEach((exist) => {
-            if(name.includes(exist)){
-                result += score[exist];
-            }
+            result += (score[exist] ? score[exist] : 0);
         });
         //console.log(result);
         answer.push(result);
