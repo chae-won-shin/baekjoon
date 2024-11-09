@@ -29,8 +29,3 @@ function sum(arr) {
     arr.forEach(e => res += e )
     return res;
 }
-
-// 길이가 같은 2개의 큐
-// 둘 중 하나 골라서 pop
-// pop한 걸 다른 큐에 insert
-// 반복 -> 각 큐 원소 합 같게 -> 작업(pop+insert)의 최소횟수?
