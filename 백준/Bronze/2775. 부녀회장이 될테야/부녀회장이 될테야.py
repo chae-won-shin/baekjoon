@@ -4,7 +4,8 @@ for _ in range(T):
     n = int(input())
     k = int(input())
 
-    dp = [[0]*(k+1) for i in range(n+1)]
+    dp = [[0]*(k+1) for _ in range(n+1)]
+
     for i in range(k+1):
         dp[0][i] = i
     
