@@ -5,8 +5,8 @@ input = sys.stdin.readline
 INF = int(1e9)
 
 def dijkstra(start):
-    q= []
-    heapq.heappush(q,(0,start))
+    q = []
+    heapq.heappush(q, (0, start))
     distance[start] = 0
 
     while q:
@@ -16,27 +16,24 @@ def dijkstra(start):
             continue
 
         for i in graph[now]:
-            cost =dist + i[1]
-            if cost < distance[i[0]] :
+            cost = dist + i[1]
+            if cost < distance[i[0]]:
                 distance[i[0]] = cost
-                heapq.heappush(q,(cost,i[0]))
+                heapq.heappush(q, (cost, i[0]))
 
-
-V, E = map(int,input().split())
-
-snode = int(input())
+V, E = map(int, input().split())
+start_node = int(input())
 
 graph = [[] for _ in range(V+1)]
-distance = [INF] * (V+1) 
+distance = [INF] * (V+1)
 
 for _ in range(E):
-    u,v,w = map(int,input().split())
-    graph[u].append((v,w))
+    u, v, w = map(int, input().split())
+    graph[u].append((v, w))
 
+dijkstra(start_node)
 
-dijkstra(snode)
-
-for i in range(1,V+1):
+for i in range(1, V+1):
     if distance[i] == INF:
         print("INF")
     else:
