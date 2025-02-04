@@ -3,7 +3,6 @@ const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
 const [n, m] = input[0].split(" ").map(Number);
 const board = input.slice(1).map((e) => e.split(" ").map(Number));
-
 let ans = -1;
 
 // 벽 세우기
@@ -24,13 +23,12 @@ function dfs(depth) {
   }
 }
 
-// 바이러스 퍼뜨리기
 function bfs() {
   const graph = board.map((row) => row.slice());
 
   const queue = [];
-  const dx = [0, 0, 1, -1];
-  const dy = [1, -1, 0, 0];
+  const dx = [-1, 1, 0, 0];
+  const dy = [0, 0, -1, 1];
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
@@ -40,8 +38,9 @@ function bfs() {
     }
   }
 
-  while (queue.length > 0) {
+  while (queue.length) {
     const [x, y] = queue.shift();
+
     for (let d = 0; d < 4; d++) {
       const nx = x + dx[d];
       const ny = y + dy[d];
