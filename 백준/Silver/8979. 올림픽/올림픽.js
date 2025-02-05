@@ -15,7 +15,8 @@ let rank = idx + 1;
 
 for (let i = 0; i < n; i++) {
   if (nations[idx].slice(1).join("") === nations[i].slice(1).join("")) {
-    rank = i;
+    rank = i + 1;
+    break;
   }
 }
 
