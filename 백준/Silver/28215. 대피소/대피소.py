@@ -1,5 +1,5 @@
 import itertools
-INF = int(1e9)
+INF = float('INF')
 
 n, k = map(int, input().split())
 pos = [tuple(map(int, input().split())) for _ in range(n)]
@@ -11,8 +11,6 @@ def get_distance(x1, y1, x2, y2):
 def get_max_distance(comb):
     max_dist = -INF
     for p in pos:
-        if p in comb:
-            continue
         dist = INF
         for c in comb:
             temp = get_distance(p[0], p[1], c[0], c[1])
