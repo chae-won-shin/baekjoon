@@ -1,19 +1,14 @@
 import sys
 
 start, end = map(int, sys.stdin.readline().split())
-d = [True for _ in range(100001)]
-d[1] = False
+limit = 100000
+d = [True] * (limit+1)
+d[0] = d[1] = False
 
-m = int(100000 ** 0.5)
-for n in range(2, m+1):
-    if d[n]:
-        for k in range(n, 100001):
-            if n * k > 100000:
-                break
-            d[n*k] = False
-
-    if n * (n+1) > 100000:
-        break
+for i in range(2, int(limit ** 0.5) + 1):
+    if d[i]:
+        for j in range(i*i, limit+1, i):
+            d[j] = False
 
 dd = [0 for _ in range(end+1)]
 
