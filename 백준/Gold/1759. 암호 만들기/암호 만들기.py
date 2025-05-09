@@ -1,24 +1,14 @@
-l, c = map(int, input().split())
-letters = list(input().split())
-visited = [False] * c
-letters.sort()
+from itertools import combinations
 
-def is_valid(path):
+l, c = map(int, input().split())
+letters = sorted(input().split())
+
+def is_valid(password):
     vowels = {'a', 'e', 'i', 'o', 'u'}
-    v_count = sum(1 for ch in path if ch in vowels)
-    c_count = len(path) - v_count
+    v_count = sum(1 for ch in password if ch in vowels)
+    c_count = len(password) - v_count
     return v_count >= 1 and c_count >= 2
 
-def dfs(chars, path, visited):
-    if len(path) == l and is_valid(path):
-        print(''.join(path))
-        return
-    
-    for i in range(c):
-        if not visited[i]:
-            if not path or chars[i] > path[-1]:
-                visited[i] = True
-                dfs(chars, path + [chars[i]], visited)
-                visited[i] = False
-
-dfs(letters, [], visited)
+for ans in combinations(letters, l):
+    if is_valid(ans):
+        print(''.join(ans))
