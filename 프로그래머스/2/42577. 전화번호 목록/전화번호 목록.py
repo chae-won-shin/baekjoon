@@ -4,11 +4,10 @@ def solution(phone_book):
         hash_map[nums] = 1
         
     for nums in phone_book:
-        arr = ''
+        temp = ''
         for num in nums:
-            arr += num
-            
-            if arr in hash_map and arr != nums: 
+            temp += num
+            if temp in hash_map and temp != nums:
                 return False
             
     return True
